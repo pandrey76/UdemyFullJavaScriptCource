@@ -1,0 +1,29 @@
+
+
+  //Вызов модального окно выбора Ок/Отмена
+  let answer1 = confirm("Are you here?");
+  console.log(answer1); // Если ОК, то true, если Отмена, то false.
+  console.log(typeof(answer1));   // boolean
+
+ 
+  let answer = prompt("Есть ли Вам 18?", "Да");    
+  // Второй параметр - это значение выводимое в диалоге по умолчанию.
+  // Для того, чтобы это всё работало в IE, всегда второй параметр 
+  // необходимо добавлять, пусть даже просто добавлять пустые кавычки.
+  // let answer = prompt("Есть ли Вам 18?", "");
+  // Результатом работы будет, строка введённая пользователем.
+
+  console.log(answer); // Если Да, то "Да", если Нет, то "Нет", если Наверное, то "Наверное".
+  console.log(typeof(answer2)); // string
+
+
+  let person = {
+    name: "John",
+    age: 25,
+    isMarried: true,
+  };
+  console.log(typeof(person)); // object
+
+  console.log(typeof(null)); // object
+  //Ошибка в языке, здесь мы видим, что null это объект,
+  // а по нотации языка это отдельный тип данных.
