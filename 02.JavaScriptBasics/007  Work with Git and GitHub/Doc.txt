@@ -1,0 +1,13 @@
+Обучение Git и его возможностям
+
+https://githowto.com/ru
+
+Документация по Git
+
+https://goo.gl/GnE9bh
+
+GitHub
+https://github.com/
+
+
+git add -A "02.JavaScriptBasics/007  Work with Git and GitHub/" - "-A" означает all, т.е. все файлы 
