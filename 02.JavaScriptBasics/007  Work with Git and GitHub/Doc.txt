@@ -1,13 +1,23 @@
 Обучение Git и его возможностям
-
-https://githowto.com/ru
+    https://githowto.com/ru
 
 Документация по Git
-
-https://goo.gl/GnE9bh
+    https://goo.gl/GnE9bh
 
 GitHub
-https://github.com/
+    https://github.com/
 
 
-git add -A "02.JavaScriptBasics/007  Work with Git and GitHub/" - "-A" означает all, т.е. все файлы 
+git add -A "02.JavaScriptBasics/007  Work with Git and GitHub/"
+    "-A" означает all, т.е. все файлы. 
+
+Закидываем на GitHub
+    git remote add origin https://github.com/pandrey76/UdemyFullJavaScriptCource.git
+        origin - это псевдоним, мы можем назвать например "test" (git push -u test master)
+    
+    При первой загрузки на github пользуемся следующей командой:
+        git push -u origin master
+
+    Далее пользуемся следующей командой для последующей загрузки на github:
+        git push -u origin
+
