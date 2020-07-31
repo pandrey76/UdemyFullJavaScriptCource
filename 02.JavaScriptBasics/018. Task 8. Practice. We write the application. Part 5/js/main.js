@@ -24,18 +24,21 @@ let startBtn = document.getElementById("start"),
 
 let money, time;
 
-function start(){
-    money = +prompt("Ваш бюджет на месяц?", ''),    // Должны быть введены цифры, если не ввести,
-        // то в консоль выведется сообщение "Произошла ошибка"
-        time = prompt("Введите дату в формате YYYY-VV-DD", "");
+// Привязываем кнопку старта
+startBtn.addEventListener('click', function (){
+    time = prompt("Введите дату в формате YYYY-VV-DD", ""),
+    money = +prompt("Ваш бюджет на месяц?", '');    // Должны быть введены цифры, если не ввести,
+    // то в консоль выведется сообщение "Произошла ошибка"
     while(isNaN(money) ||   //  isNaN возврашает true в том случае, когда в неё попадают не цифры.
     money == "" ||  // Введена пустая строка
     money == null)  // Чтобы пользователь не мого нажать кнопку "Отмена".
     {
-        money = +prompt("Ваш бюджет на месяц?", '')
+        money = prompt("Ваш бюджет?", "")
     }
-}
-start();
+    appData.budget = money;
+    appData.timeData = time;
+    budgetValue.textContent = money.toFixed();
+});
 
 let appData = {
     budget: money,
