@@ -1,3 +1,26 @@
+let startBtn = document.getElementById("start"),
+    budgetValue = document.getElementsByClassName('budget-value')[0],
+    dayBudgetValue = document.getElementsByClassName('daybudget-value')[0],
+    levelValue = document.getElementsByClassName('level-value')[0],
+    expensesValue = document.getElementsByClassName('expenses-value')[0],
+    optionalExpensesValue = document.getElementsByClassName('optionalexpenses-value')[0],
+    incomeValue = document.getElementsByClassName('income-value')[0],
+    monthSavingsValue = document.getElementsByClassName('monthsavings-value')[0],
+    yearSavingsValue = document.getElementsByClassName('yearsavings-value')[0],
+
+
+    expensesItem = document.getElementsByClassName('expenses-item'),
+    expensesBtn = document.getElementsByTagName('button')[0],
+    optionalExpensesBtn = document.getElementsByTagName('button')[1],
+    countBtn = document.getElementsByTagName('button')[2],
+    optionalExpensesItem = document.querySelectorAll('.optionalexpenses-item'),
+    incomeItem = document.querySelector('.choose-income'),
+    checkSavings = document.querySelector('#savings'),
+    sumValue = document.querySelector('.choose-sum'),
+    percentValue = document.querySelector('.choose-percent'),
+    yearValue = document.querySelector('.year-value'),
+    monthValue = document.querySelector('.month-value'),
+    dayValue = document.querySelector('.day-value');
 
 let money, time;
 
@@ -82,106 +105,3 @@ let appData = {
         appData.income.sort();  //Сортируем массив по имени
     }
 };
-
-// 1. Получить кнопку "Начать расчет" через id
-//***********************************************************
-let startButton = document.getElementById('start');
-//***********************************************************
-
-// 2. Получить все блоки в правой части программы через классы
-// (которые имеют класс название-value, начиная с
-// <div class="budget-value"></div> и заканчивая
-// <div class="yearsavings-value"></div>)
-//***********************************************************
-console.log("All classes ending on ", "-value");
-let allValueClassnamesEnds = document.querySelectorAll("[class$='-value']");
-allValueClassnamesEnds.forEach(function (item, num, mass){
-    console.log(item);
-});
-//***********************************************************
-
-// 3. Получить поля(input) c обязательными расходами через класс.
-// (class=”expenses-item”)
-//***********************************************************
-let classExpensesItem = document.querySelector('.expenses-item');
-console.log("class=expenses-item", classExpensesItem);
-//***********************************************************
-
-// 4. Получить кнопки “Утвердить” и “Рассчитать” через Tag,
-// каждую в своей переменной.
-//***********************************************************
-let allButtons = document.getElementsByTagName('button');
-let approveButtons = [],
-    calculateButtons = [];
-for (let i = 0; i < allButtons.length; i++)
-{
-    if(allButtons[i].innerText == 'Утвердить')
-    {
-        approveButtons.push(allButtons[i]);
-    }
-    else if (allButtons[i].innerText == 'Рассчитать')
-    {
-        calculateButtons.push(allButtons[i]);
-    }
-}
-console.log("approveButtons: ");
-approveButtons.forEach(function (item, num, mass){
-    console.log(item);
-});
-console.log("calculateButtons: ");
-calculateButtons.forEach(function (item, num, mass){
-    console.log(item);
-});
-//***********************************************************
-
-// 5. Получить поля для ввода необязательных расходов
-// (optionalexpenses-item) при помощи querySelectorAll
-//***********************************************************
-let optionalexpensesItems = document.querySelectorAll('.optionalexpenses-item');
-console.log("optionalexpenses-item classname elements: ");
-optionalexpensesItems.forEach(function (item, num, mass){
-    console.log(item);
-});
-//***********************************************************
-
-// 6. Получить оставшиеся поля через querySelector
-// (статьи возможного дохода, чекбокс, сумма, процент,
-// год, месяц, день)
-//***********************************************************
-// Статьи возможного дохода
-let chooseIncomeEdit = document.querySelector('.choose-income'),
-    // Чекбокс
-    checkSavingsBox = document.querySelector('#savings'),
-    // Сумма
-    chooseSumEdit = document.querySelector('#sum'),
-    // Процент
-    choosePercentEdit = document.querySelector('#percent'),
-    // Год
-    yearValueEdit = document.querySelector('.year-value'),
-    //  Месяц
-    monthValueEdit = document.querySelector('.month-value'),
-    //  День
-    dayValueEdit = document.querySelector('.day-value');
-
-
-console.log("Статьи возможного дохода");
-console.log(chooseIncomeEdit);
-
-console.log("Чекбокс");
-console.log(checkSavingsBox);
-
-console.log("Сумма");
-console.log(chooseSumEdit);
-
-console.log("Процент");
-console.log(choosePercentEdit);
-
-console.log("Год");
-console.log(yearValueEdit);
-
-console.log("Месяц");
-console.log(monthValueEdit);
-
-console.log("День");
-console.log(dayValueEdit);
-//***********************************************************
