@@ -36,8 +36,21 @@ startBtn.addEventListener('click', function (){
         money = prompt("Ваш бюджет?", "")
     }
     appData.budget = money;
-    appData.timeData = time;
+    appData.timeData = time ;
+    // Передали значение на страницу и наш введённый бюджет там отобразился
     budgetValue.textContent = money.toFixed();
+    // Дата в html представлена в виде трёх inputs у которых стоит
+    // аттрибут "readonly" это значит, что пользователь туда вручную
+    // не сможет ввести.
+    // Когда мы работаем с inputs с помощью JS правильнее и легче использовать
+    // аттрибут "value" а не textContent. Другими словами если у нас есть
+    // элемент "input" то мы работаем с value.
+    // Как работать с объектом Date можно в интернете
+    //  С помощью метода "parse" мы получим дату в виде "time_t"
+    yearValue.value = new Date(Date.parse(time)).getFullYear();
+    // Пребавляем 1 т.к. нумерация начинается с нуля
+    monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
+    dayValue.value = new Date(Date.parse(time)).getDate();
 });
 
 let appData = {
