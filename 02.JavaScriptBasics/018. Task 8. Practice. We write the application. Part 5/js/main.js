@@ -53,6 +53,36 @@ startBtn.addEventListener('click', function (){
     dayValue.value = new Date(Date.parse(time)).getDate();
 });
 
+expensesBtn.addEventListener('click', function (){
+    let sum = 0;
+    // Проходим по всем элементам псевдомасива
+    for (let i = 0; i < expensesItem.length; i++) {
+        let a = expensesItem[i].value;
+        let b = expensesItem[++i].value;
+        // Если в prompt нажать отмена, то мы получим "null"
+        if ((typeof (a) === 'string') &&   // Должна быть строка
+            (typeof (a) != null) &&         // Нельзя нажимать отмену в первом окне
+            (typeof (b) != null) &&         // Нельзя нажимать отмену во втором окне
+            (b != '') &&                   // Обязательно необходимо ввести данные в первое окно
+            (a != '') &&                   // Обязательно необходимо ввести данные во второе окно
+            (a.length < 50)
+        ) {
+            console.log("Всё верно");
+            // добавляем ключ-значение
+            appData.expenses[a] = b;
+            sum += +b;  // +b здесь поставлено для того, чтобы интерпертатор
+                        // понял, что мы передаём число. Как говорилось ранее,
+                        // когда мы получаем данные от пользователей, то мы их
+                        // получаем в виде строки и expensesItem[i].value не
+                        // исключение, поэтому, чтобы у нас были нормальные
+                        // цифровые данные в виде числа ставится '+'.
+        } else {
+            i = i - 1;
+        }
+    }
+    expensesValue.textContent = sum;
+ });
+
 let appData = {
     budget: money,
     expenses: {},
@@ -61,24 +91,6 @@ let appData = {
     timeData: time,
     saving: true,   // false
     chooseExpenses: function () {
-        for (let i = 0; i < 2; i++) {
-            let a = prompt("Введите обязательную статью расходов в этом месяце", "");
-            let b = prompt("Во сколько обойдётся?", "");
-
-            // Если в prompt нажать отмена, то мы получим "null"
-            if ((typeof (a) === 'string') &&   // Должна быть строка
-                (typeof (a) != null) &&         // Нельзя нажимать отмену в первом окне
-                (typeof (b) != null) &&         // Нельзя нажимать отмену во втором окне
-                (b != '') &&                   // Обязательно необходимо ввести данные в первое окно
-                (a != '') &&                   // Обязательно необходимо ввести данные во второе окно
-                (a.length < 50)
-            ) {
-                console.log("Всё верно");
-                appData.expenses[a] = b;
-            } else {
-                i = i - 1;
-            }
-        }
     },
     detectDayBudget: function () {
         appData.moneyPerDay = (appData.budget / 30).toFixed(); //toFixed - откидывает дробную часть (округляем),
