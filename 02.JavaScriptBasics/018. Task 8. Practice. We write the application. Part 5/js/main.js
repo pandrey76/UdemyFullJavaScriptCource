@@ -137,13 +137,23 @@ incomeItem.addEventListener('input', function (){
     incomeValue.textContent = appData.income;
  });
 
+checkSavings.addEventListener('click', function() {
+    if (appData.saving == true) {
+        appData.saving = false;
+    }
+    else {
+        appData.saving = true;
+    }
+    console.log(appData.saving);
+});
+
 let appData = {
     budget: money,
     expenses: {},
     optionalExpenses: {},
     income: [],
     timeData: time,
-    saving: true,   // false
+    saving: false,   // true
     chooseExpenses: function () {
     },
     detectDayBudget: function () {
