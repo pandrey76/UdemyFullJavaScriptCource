@@ -83,6 +83,15 @@ expensesBtn.addEventListener('click', function (){
     expensesValue.textContent = sum;
  });
 
+optionalExpensesBtn.addEventListener('click', function () {
+    for(let i = 0; i < optionalExpensesItem.length; i++)
+    {
+        let opt = optionalExpensesItem[i].value;
+        appData.optionalExpenses[i] = opt;
+        optionalExpensesValue.textContent += appData.optionalExpenses[i] + ' ';
+    }
+    });
+
 let appData = {
     budget: money,
     expenses: {},
@@ -119,12 +128,7 @@ let appData = {
         }
     },
     chooseOptExpenses: function () {
-        for(let i = 1; i < 3; i++)
-        {
-            let opt = prompt("Статья необязательных расходов?", "")
-            appData.optionalExpenses[i] = opt;
-        }
-    },
+     },
     chooseIncome: function () {
         let items = prompt('Что принесёт дополнительный доход? (Перечислите через запятую)', '');
         // Вводим например: аренда, подработка, чаевые
