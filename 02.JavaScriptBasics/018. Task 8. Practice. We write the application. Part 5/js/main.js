@@ -119,6 +119,24 @@ countBtn.addEventListener('click', function () {
 
 });
 
+// Здесь мы будем использоувать два события, которое могут
+// использоваться в TextArriere, Input и Select, это события
+// input и change
+// События input возникает тогда, когда мы что то вводим в наш input,
+// данное событие генерирется после каждого ввода символа.
+// Событие change возникает когда мы убираем фокус (наш курсор)
+// с нашего input и где то кликаем в другом месте, то будет сгенерированно
+// событие change.
+// Событие input намного удобнее.
+
+incomeItem.addEventListener('input', function (){
+    let items = incomeItem.value;
+    // Вводим например: аренда, подработка, чаевые
+    appData.income = items.split(',');
+
+    incomeValue.textContent = appData.income;
+ });
+
 let appData = {
     budget: money,
     expenses: {},
@@ -144,9 +162,6 @@ let appData = {
     chooseOptExpenses: function () {
      },
     chooseIncome: function () {
-        let items = prompt('Что принесёт дополнительный доход? (Перечислите через запятую)', '');
-        // Вводим например: аренда, подработка, чаевые
-        appData.income = items.split(',');
         appData.income.push(prompt('может что-то ещё?'));
         appData.income.sort();  //Сортируем массив по имени
     }
