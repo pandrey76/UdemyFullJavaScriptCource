@@ -92,6 +92,33 @@ optionalExpensesBtn.addEventListener('click', function () {
     }
     });
 
+countBtn.addEventListener('click', function () {
+
+    if (appData.budget != undefined) {
+        appData.moneyPerDay = (appData.budget / 30).toFixed();
+        //toFixed - откидывает дробную часть (округляем),
+        // но при этом возваращает строку, это надо помнить.
+        // Параметр функции это число, знаков после запятой,
+        // которые мы хотим вернуть, Например:
+        // toFixed(2) - два знака после запятой.
+        dayBudgetValue.textContent = appData.moneyPerDay;
+
+        if (appData.moneyPerDay < 100) {
+            levelValue.textContent = "Минимальный уровень достатка";
+        } else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+            levelValue.textContent = "Средний уровень достатка";
+        } else if (appData.moneyPerDay > 2000) {
+            levelValue.textContent = "Высокий уровень достатка";
+        } else {
+            levelValue.textContent = "Произошла ошибка";
+        }
+    }
+    else {
+        dayBudgetValue.textContent = 'Произошла ошибка';
+    }
+
+});
+
 let appData = {
     budget: money,
     expenses: {},
@@ -102,22 +129,9 @@ let appData = {
     chooseExpenses: function () {
     },
     detectDayBudget: function () {
-        appData.moneyPerDay = (appData.budget / 30).toFixed(); //toFixed - откидывает дробную часть (округляем),
-        // но при этом возваращает строку, это надо помнить.
-        // Параметр функции это число, знаков послк запятой, которые мы хотим вернуть,
-        // Например: toFixed(2) - два знака после запятой.
         alert("Ежедневный бюджет: " + appData.moneyPerDay);
     },
     detectLevel: function () {
-        if (appData.moneyPerDay < 100) {
-            console.log("Минимальный уровень достатка");
-        } else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
-            console.log("Средний уровень достатка");
-        } else if (appData.moneyPerDay > 2000) {
-            console.log("Высокий уровень достатка");
-        } else {
-            console.log("Произошла ошибка");
-        }
     },
     checkSavings: function () {
         if (appData.savings == true){
