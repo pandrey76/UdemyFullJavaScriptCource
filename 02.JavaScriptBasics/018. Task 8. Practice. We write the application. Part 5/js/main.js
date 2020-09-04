@@ -95,12 +95,20 @@ optionalExpensesBtn.addEventListener('click', function () {
 countBtn.addEventListener('click', function () {
 
     if (appData.budget != undefined) {
-        appData.moneyPerDay = (appData.budget / 30).toFixed();
+        // Расчете дневного бюджета учитывать сумму обязательных трат
+        // (т. e. от бюджета на месяц отнимаем общую сумму всех обяз.
+        // трат и ее делим на 30 дней)
+        let expSum = 0;
+        for (let key in appData.expenses) {
+            expSum += +appData.expenses[key];
+        }
+        appData.moneyPerDay = ((appData.budget - expSum) / 30).toFixed();
         //toFixed - откидывает дробную часть (округляем),
         // но при этом возваращает строку, это надо помнить.
         // Параметр функции это число, знаков после запятой,
         // которые мы хотим вернуть, Например:
         // toFixed(2) - два знака после запятой.
+
         dayBudgetValue.textContent = appData.moneyPerDay;
 
         if (appData.moneyPerDay < 100) {
