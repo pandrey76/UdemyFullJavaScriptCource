@@ -180,25 +180,4 @@ let appData = {
     income: [],
     timeData: time,
     saving: false,   // true
-    chooseExpenses: function () {
-    },
-    detectDayBudget: function () {
-        alert("Ежедневный бюджет: " + appData.moneyPerDay);
-    },
-    detectLevel: function () {
-    },
-    checkSavings: function () {
-        if (appData.savings == true){
-            let save = +prompt("Какова сумма накоплений?"),
-                percent = +prompt("Под какой процент?");
-            appData.monthIncome = save/100/12*percent;
-            alert("Доход в месяц с Вашего депозита: " +  appData.monthIncome);
-        }
-    },
-    chooseOptExpenses: function () {
-     },
-    chooseIncome: function () {
-        appData.income.push(prompt('может что-то ещё?'));
-        appData.income.sort();  //Сортируем массив по имени
-    }
 };
